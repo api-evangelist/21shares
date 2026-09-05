@@ -1,0 +1,13 @@
+generated: '2026-09-05'
+method: searched
+source: https://www.21shares.com/en-us/product
+plan_count: 0
+plans: []
+note: >-
+  21Shares publishes no API and therefore no API plans, tiers, quotas or overage schedule. It does
+  publish per-product management fees on each ETP page and in each factsheet, but those are the expense
+  ratio of a financial instrument, not the price of API access, and recording them here would misstate
+  what the field means. An honest zero.
+evidence:
+- {url: 'https://www.21shares.com/en-us/product', status: 200, finding: product catalogue, no API pricing}
+- {url: 'https://www.21shares.com/sitemap.xml', status: 200, finding: no /pricing or /developers page in 8267 URLs}

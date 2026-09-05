@@ -1,0 +1,105 @@
+generated: '2026-09-05'
+method: probed
+source: direct HTTP probe of every host the record knows
+note: >-
+  Every named /.well-known/ path plus /apis.json and /apis.yml was probed on all four hosts 21Shares
+  operates. NOTHING was served. www.21shares.com and 21shares.com are a Webflow site that answers every
+  /.well-known/* request with an 88-byte "Invalid .well-known request" HTML page (HTTP 404);
+  cdn.21shares.com is an S3 origin returning NoSuchKey 404s; data.21shares.com is an AWS API Gateway
+  behind CloudFront that answers 403 ForbiddenException to every path and method, including the root and
+  a negative-control path. No WellKnown, SecurityTxt, APICatalog or AgentCard pointer is emitted — this
+  file records an absence, not a surface.
+hit_count: 0
+path_echo_control: passed
+hosts:
+- host: https://www.21shares.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/21shares-negative-control-7f3ab91c.json, status: 404}
+- host: https://21shares.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/21shares-negative-control-7f3ab91c.json, status: 404}
+- host: https://cdn.21shares.com
+  note: S3 origin serving product PDFs and FinDatEx spreadsheets; all keys absent.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/21shares-negative-control-7f3ab91c.json, status: 404}
+- host: https://data.21shares.com
+  note: >-
+    AWS API Gateway (x-amz-apigw-id / x-amzn-errortype ForbiddenException) fronted by CloudFront and
+    Cloudflare on 21Shares' own registrable domain. Returns 403 {"message":"Forbidden"} uniformly for
+    GET and OPTIONS on every path tried, including "/". A real API host with no public contract,
+    no documentation and no anonymous surface.
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/oauth-protected-resource, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/ai-plugin.json, status: 403}
+  - {path: /.well-known/apis.json, status: 403}
+  - {path: /apis.json, status: 403}
+  - {path: /apis.yml, status: 403}
+  - {path: /.well-known/aauth-resource.json, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+  - {path: /.well-known/21shares-negative-control-7f3ab91c.json, status: 403}
+contract_discovery:
+  note: >-
+    STEP 0b was run in full before recording "no machine-readable API contract". No OpenAPI, Swagger,
+    GraphQL, AsyncAPI, MCP, gRPC/Protobuf, WSDL or OGC surface was found on any host.
+  probes:
+  - {url: 'https://www.21shares.com/openapi.json', status: 404, result: Webflow 404 HTML}
+  - {url: 'https://www.21shares.com/swagger.json', status: 404, result: Webflow 404 HTML}
+  - {url: 'https://www.21shares.com/api-docs', status: 404, result: Webflow 404 HTML}
+  - {url: 'https://www.21shares.com/llms.txt', status: 404, result: Webflow 404 HTML}
+  - {url: 'https://data.21shares.com/openapi.json', status: 403, result: API Gateway Forbidden}
+  - {url: 'https://data.21shares.com/swagger.json', status: 403, result: API Gateway Forbidden}
+  - {url: 'https://data.21shares.com/v1/openapi.json', status: 403, result: API Gateway Forbidden}
+  - {url: 'https://data.21shares.com/graphql', status: 403, result: API Gateway Forbidden}
+  - {url: 'https://data.21shares.com/docs', status: 403, result: API Gateway Forbidden}
+  - {url: 'https://developer.21shares.com/', status: 0, result: NXDOMAIN}
+  - {url: 'https://docs.21shares.com/', status: 0, result: NXDOMAIN}
+  - {url: 'https://api.21shares.com/', status: 0, result: NXDOMAIN}
+  sitemap:
+    url: https://www.21shares.com/sitemap.xml
+    status: 200
+    urls: 8267
+    finding: >-
+      The published sitemap carries 8,267 URLs across 13 locales and contains no /developers, /api,
+      /docs or /developer-portal page of any kind. Page types are insights, product, product-documents,
+      authors, learn, press, newsletter, about-us, contact-us and the legal set.

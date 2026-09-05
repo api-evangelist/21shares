@@ -1,0 +1,13 @@
+generated: '2026-09-05'
+method: probed
+source: https://data.21shares.com/
+limit_count: 0
+rate_limits: []
+note: >-
+  No published rate limits, because no public API is documented. The one API host on the domain,
+  data.21shares.com (an AWS API Gateway behind CloudFront and Cloudflare), returns 403
+  {"message":"Forbidden"} to every anonymous request and emits no RateLimit-*, X-RateLimit-* or
+  Retry-After header, so nothing could be observed at runtime either.
+headers_observed: []
+evidence:
+- {url: 'https://data.21shares.com/', status: 403, headers: 'x-amzn-errortype: ForbiddenException; no rate-limit headers'}

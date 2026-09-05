@@ -1,0 +1,96 @@
+generated: '2026-09-05'
+method: searched
+source: https://www.21shares.com/en-eu/product-documents/final-terms
+note: >-
+  21Shares publishes no API, so the cross-cutting web-API standards below are all false by absence.
+  What it DOES publish machine-readably is its regulatory distribution data: the FinDatEx European
+  template family (EMT / EPT / EET), which is the domain standard for this market. Those files were
+  fetched, opened and their field dictionaries read to confirm the version and shape — they are not a
+  prose claim on a marketing page.
+standards:
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI/Swagger document served on any 21Shares host; see well-known/21shares-well-known.yml
+- id: graphql
+  conforms: false
+  evidence: No /graphql surface reachable; data.21shares.com/graphql returns 403 Forbidden
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface documented
+- id: oauth2
+  conforms: false
+  evidence: /.well-known/oauth-authorization-server 404 on every host
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration 404 on every host
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No public error contract
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt 404 on www.21shares.com, 21shares.com and cdn.21shares.com
+domain_standards:
+- id: findatex-emt
+  name: FinDatEx European MiFID Template (EMT)
+  version: V4.2
+  conforms: true
+  evidence: https://cdn.21shares.com/uploads/current-documents/products/emt/EMT.xlsx
+  evidence_detail: >-
+    HTTP 200, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, 31,416 bytes,
+    Last-Modified Tue 01 Sep 2026 10:40:58 GMT. Opened: the sheet carries the canonical numbered EMT
+    field dictionary (00001_EMT_Version = V4.2, 00002_EMT_Producer_Name = 21Shares AG,
+    00003_EMT_Producer_LEI = 254900UWHMJRRODS3Z64, 00004_EMT_Producer_Email = etp@21shares.com) and
+    one row per ETP with ISIN, target market, cost and ex-ante/ex-post reporting fields across roughly
+    209 defined columns.
+  regime: MiFID II product governance / target market reporting
+  why_it_matters: >-
+    A distributor that already speaks EMT ingests 21Shares' full ETP range with no bespoke connector.
+- id: findatex-ept
+  name: FinDatEx European PRIIPs Template (EPT)
+  conforms: true
+  evidence: https://cdn.21shares.com/uploads/product_documents/EPT/EPT.xlsx
+  evidence_detail: >-
+    HTTP 200, XLSX, 40,949 bytes, Last-Modified Mon 17 Aug 2026 12:14:09 GMT. Carries the canonical EPT
+    field dictionary (00001_EPT_Version, 00010_Portfolio_Manufacturer_Name, 00016_Portfolio_Manufacturer_LEI,
+    00070_PRIIPs_KID_Publication_Date, 00075_PRIIPs_KID_Web_Address, 00080_Portfolio_PRIIPs_Category)
+    across roughly 254 defined columns.
+  regime: PRIIPs Regulation (EU) No 1286/2014 — cost and risk data exchange
+- id: findatex-eet
+  name: FinDatEx European ESG Template (EET)
+  version: V1.1.3
+  conforms: true
+  evidence: https://cdn.21shares.com/uploads/current-documents/products/eet/EET.xlsx
+  evidence_detail: >-
+    HTTP 200, XLSX, 117,042 bytes, Last-Modified Tue 14 Jul 2026 07:32:54 GMT. Carries the canonical EET
+    field dictionary (00010_EET_Version = V1.1.3, 00030_EET_Producer_LEI = 254900UWHMJRRODS3Z64,
+    00060_EET_Data_Reporting_SFDR_Pre_Contractual, 00090_EET_Data_Reporting_MiFID,
+    00100_EET_Data_Reporting_IDD) across roughly 590 defined columns.
+  regime: SFDR / MiFID II sustainability preferences / IDD
+- id: priips-kid
+  name: PRIIPs Key Information Document
+  conforms: true
+  evidence: https://www.21shares.com/en-eu/product-documents/kids
+  evidence_detail: HTTP 200 — a per-product KID index; documents are PDF, one per ISIN per language.
+  machine_readable: false
+- id: lei
+  name: Legal Entity Identifier (ISO 17442)
+  conforms: true
+  evidence: 254900UWHMJRRODS3Z64
+  evidence_detail: >-
+    Read from field 00003_EMT_Producer_LEI in the published EMT and 00030_EET_Producer_LEI in the
+    published EET; consistent across both files.
+- id: isin
+  name: ISIN (ISO 6166)
+  conforms: true
+  evidence: https://cdn.21shares.com/uploads/current-documents/products/emt/EMT.xlsx
+  evidence_detail: >-
+    Every ETP row in the EMT is keyed on a Swiss ISIN (CH0445689208 HODL, CH1114873776 ASOL,
+    CH0454664043 AXRP, and so on across the full range).
+gaps:
+- >-
+  The FinDatEx family is distributed as XLSX files at fixed CDN URLs with no versioned index, no
+  changelog, no checksum and no machine-readable pointer (no /apis.json, no /.well-known/api-catalog),
+  so a consumer has to poll Last-Modified to notice a change.
+- >-
+  No CSV or JSON serialization of the EMT/EPT/EET is offered alongside the spreadsheets, and the
+  per-product NAV, holdings and cost data on the website is not published in any machine-readable form.

@@ -64,5 +64,30 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-21Shares is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+21Shares AG is a Swiss-headquartered issuer of physically backed cryptocurrency exchange-traded
+products (ETPs), founded in 2018 as Amun AG and part of the 21.co group. It runs the largest suite of
+crypto ETPs in the world — single-asset, staking, and index/basket products — listed on regulated
+European exchanges including SIX Swiss Exchange, Xetra and Euronext.
+
+**21Shares publishes no public API.** A full contract-discovery pass on 2026-09-05 found no OpenAPI,
+Swagger, GraphQL, AsyncAPI, MCP, gRPC or WSDL document on any host it operates, no developer portal,
+no SDK on any package registry, and no served `/.well-known/` document. The company's 8,267-URL
+sitemap contains no developer page. `data.21shares.com` is an AWS API Gateway on its own domain, but
+answers `403 Forbidden` to every anonymous request and is documented nowhere.
+
+What it *does* publish machine-readably is regulatory distribution data, in the FinDatEx European
+template family:
+
+| Standard | Version | URL |
+|---|---|---|
+| European MiFID Template (EMT) | V4.2 | `cdn.21shares.com/uploads/current-documents/products/emt/EMT.xlsx` |
+| European PRIIPs Template (EPT) | — | `cdn.21shares.com/uploads/product_documents/EPT/EPT.xlsx` |
+| European ESG Template (EET) | V1.1.3 | `cdn.21shares.com/uploads/current-documents/products/eet/EET.xlsx` |
+
+Producer 21Shares AG, LEI `254900UWHMJRRODS3Z64`, contact `etp@21shares.com`. See
+[`conformance/21shares-conformance.yml`](conformance/21shares-conformance.yml) for the fetched
+evidence and [`well-known/21shares-well-known.yml`](well-known/21shares-well-known.yml) for the full
+discovery probe and its recorded absences.
+
+- Website: https://www.21shares.com/
+- GitHub organization: https://github.com/amun

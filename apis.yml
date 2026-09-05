@@ -1,17 +1,33 @@
 aid: 21shares
 name: 21Shares
-description: '21Shares is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  21Shares AG is a Swiss-headquartered issuer of physically backed cryptocurrency exchange-traded
+  products (ETPs), founded in 2018 as Amun AG and part of the 21.co group. It runs the largest suite
+  of crypto ETPs in the world — single-asset, staking, and index/basket products covering Bitcoin,
+  Ethereum, Solana, XRP and dozens of other assets — listed on regulated European exchanges including
+  SIX Swiss Exchange, Xetra and Euronext, and distributed through banks and brokers. The product is a
+  regulated financial instrument, not software: 21Shares publishes no developer program, no public API
+  reference and no SDKs. What it does publish machine-readably is regulatory distribution data — the
+  FinDatEx European MiFID Template (EMT V4.2), European PRIIPs Template (EPT) and European ESG Template
+  (EET V1.1.3) spreadsheets covering its full ETP range with ISINs, costs and target-market data — plus
+  PRIIPs KIDs, prospectuses, final terms and factsheets as PDFs, and an RSS research feed.
 url: https://raw.githubusercontent.com/api-evangelist/21shares/refs/heads/main/apis.yml
-x-type: company
-x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+image: https://cdn.prod.website-files.com/68b01c26946cffef7d668608/68f6a791dfbe35009787aa85_Website_Thumbnail.png
 specificationVersion: '0.20'
+position: Producing
 created: '2026-09-05'
 modified: '2026-09-05'
 tags:
 - Company
+- Financial Services
+- Asset Management
+- Cryptocurrency
+- Exchange Traded Products
+- Digital Assets
+- Investment
+- Switzerland
+- Market Data
+- Regulatory Reporting
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +35,65 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/21shares-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.21shares.com/
+- type: About
+  url: https://www.21shares.com/en-us/about-us
+- type: Support
+  url: https://www.21shares.com/en-us/contact-us
+- type: Blog
+  url: https://www.21shares.com/en-us/insights
+- type: BlogRSS
+  url: https://www.21shares.com/en-eu/insights/rss.xml
+- type: Newsroom
+  url: https://www.21shares.com/en-us/press
+- type: GitHubOrganization
+  url: https://github.com/amun
+- type: TermsOfService
+  url: https://www.21shares.com/en-us/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.21shares.com/en-us/privacy-policy
+- type: LinkedIn
+  url: https://www.linkedin.com/company/21shares
+- type: Twitter
+  url: https://x.com/21shares
+- type: YouTube
+  url: https://www.youtube.com/@21shares/videos
+- type: Conformance
+  url: conformance/21shares-conformance.yml
+- type: Packages
+  url: packages/21shares-packages.yml
+- type: Plans
+  url: plans/21shares-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/21shares-rate-limits.yml
+- type: LLMsTxt
+  url: llms/21shares-llms.txt
+x-enrichment:
+  date: '2026-09-05'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    21Shares AG issues regulated crypto exchange-traded products, not software — its published sitemap
+    carries 8,267 URLs across 13 locales with no developer, API or docs page anywhere in it, and the one
+    API host on its own domain (data.21shares.com, an AWS API Gateway) answers 403 Forbidden to every
+    path and method, undocumented; the only machine-readable data it distributes is the FinDatEx
+    EMT/EPT/EET spreadsheet family on its CDN.
+  evidence:
+  - url: https://www.21shares.com/sitemap.xml
+    status: 200
+  - url: https://data.21shares.com/openapi.json
+    status: 403
+  - url: https://www.21shares.com/openapi.json
+    status: 404
+  - url: https://www.21shares.com/.well-known/agent-card.json
+    status: 404
+  - url: https://cdn.21shares.com/uploads/current-documents/products/emt/EMT.xlsx
+    status: 200
+  checked: '2026-09-05'

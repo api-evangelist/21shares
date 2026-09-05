@@ -1,0 +1,20 @@
+generated: '2026-09-05'
+method: searched
+source: npm registry search, PyPI, RubyGems, crates.io, GitHub org github.com/amun
+package_count: 0
+packages: []
+note: >-
+  No first-party 21Shares client library exists on any public registry. npm registry search for
+  "21shares" returns 0 results; pypi.org/pypi/21shares/json, rubygems.org/api/v1/gems/21shares.json and
+  crates.io/api/v1/crates/21shares all return 404. The company's GitHub organization is github.com/amun
+  (org display name "21Shares", blog 21shares.com, 21 public repos) and it publishes no SDK: of its 21
+  repos, 17 are forks of third-party projects (CMTAT, set-protocol-v2, DefiLlama, web3-onboard,
+  solana-program-library, terraform-aws-rds) and the four originals are Whitepapers, contracts,
+  jasper-contracts (Solidity) and gh-action-ssm-to-env (a Shell CI action) — none is an API client.
+  No SDKs pointer is emitted; there is nothing to count.
+registries_checked:
+- {registry: npm, query: 'https://registry.npmjs.org/-/v1/search?text=21shares', status: 200, results: 0}
+- {registry: pypi, url: 'https://pypi.org/pypi/21shares/json', status: 404}
+- {registry: rubygems, url: 'https://rubygems.org/api/v1/gems/21shares.json', status: 404}
+- {registry: crates.io, url: 'https://crates.io/api/v1/crates/21shares', status: 404}
+- {registry: github, url: 'https://api.github.com/orgs/amun/repos', status: 200, results: 21, official_clients: 0}
