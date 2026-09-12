@@ -1,0 +1,21 @@
+{
+  "repo": "21shares",
+  "feeds": [
+    {
+      "source": "https://www.21shares.com/en-us/contact-us",
+      "feed_url": "https://www.21shares.com/en-us/contact-us",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://www.21shares.com/en-us/insights",
+      "feed_url": "https://www.21shares.com/en-us/insights",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-09-06T19:17:18Z"
+}
