@@ -19,7 +19,7 @@ created: '2026-09-05'
 modified: '2026-09-05'
 tags:
 - Company
-- Financial-Services
+- Financial Services
 - Asset Management
 - Cryptocurrency
 - Exchange Traded Products
@@ -39,6 +39,7 @@ tags_raw:
 - Switzerland
 - Market Data
 - Regulatory Reporting
+- Financial-Services
 apis: []
 maintainers:
 - FN: Kin Lane
