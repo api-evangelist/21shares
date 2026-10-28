@@ -64,30 +64,96 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-21Shares AG is a Swiss-headquartered issuer of physically backed cryptocurrency exchange-traded
-products (ETPs), founded in 2018 as Amun AG and part of the 21.co group. It runs the largest suite of
-crypto ETPs in the world — single-asset, staking, and index/basket products — listed on regulated
-European exchanges including SIX Swiss Exchange, Xetra and Euronext.
+21Shares AG is a Swiss-headquartered issuer of physically backed cryptocurrency exchange-traded products (ETPs), founded in 2018 as Amun AG and part of the 21.co group. It runs the largest suite of crypto ETPs in the world — single-asset, staking, and index/basket products covering Bitcoin, Ethereum, Solana, XRP and dozens of other assets — listed on regulated European exchanges including SIX Swiss Exchange, Xetra and Euronext, and distributed through banks and brokers. The product is a regulated financial instrument, not software: 21Shares publishes no developer program, no public API reference and no SDKs. What it does publish machine-readably is regulatory distribution data — the FinDatEx European MiFID Template (EMT V4.2), European PRIIPs Template (EPT) and European ESG Template (EET V1.1.3) spreadsheets covering its full ETP range with ISINs, costs and target-market data — plus PRIIPs KIDs, prospectuses, final terms and factsheets as PDFs, and an RSS research feed.
 
-**21Shares publishes no public API.** A full contract-discovery pass on 2026-09-05 found no OpenAPI,
-Swagger, GraphQL, AsyncAPI, MCP, gRPC or WSDL document on any host it operates, no developer portal,
-no SDK on any package registry, and no served `/.well-known/` document. The company's 8,267-URL
-sitemap contains no developer page. `data.21shares.com` is an AWS API Gateway on its own domain, but
-answers `403 Forbidden` to every anonymous request and is documented nowhere.
+**Areas:** Company · Financial Services · Asset Management · Cryptocurrency · Exchange Traded Products · Digital Assets · Investment · Switzerland · Market Data · Regulatory Reporting
 
-What it *does* publish machine-readably is regulatory distribution data, in the FinDatEx European
-template family:
+## 21Shares on APIs.io
 
-| Standard | Version | URL |
-|---|---|---|
-| European MiFID Template (EMT) | V4.2 | `cdn.21shares.com/uploads/current-documents/products/emt/EMT.xlsx` |
-| European PRIIPs Template (EPT) | — | `cdn.21shares.com/uploads/product_documents/EPT/EPT.xlsx` |
-| European ESG Template (EET) | V1.1.3 | `cdn.21shares.com/uploads/current-documents/products/eet/EET.xlsx` |
+Everything profiled for 21Shares is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/21shares/](https://apis.io/providers/21shares/)** — or go straight to one of the APIs or properties below.
 
-Producer 21Shares AG, LEI `254900UWHMJRRODS3Z64`, contact `etp@21shares.com`. See
-[`conformance/21shares-conformance.yml`](conformance/21shares-conformance.yml) for the fetched
-evidence and [`well-known/21shares-well-known.yml`](well-known/21shares-well-known.yml) for the full
-discovery probe and its recorded absences.
+### Published properties
 
-- Website: https://www.21shares.com/
-- GitHub organization: https://github.com/amun
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [21Shares Domain Security](https://apis.io/security/21shares/21shares-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [21Shares Plans Pricing](https://apis.io/plans/21shares/21shares-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [21Shares Rate Limits](https://apis.io/rate-limits/21shares/21shares-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.21shares.com/)
+- [Support](https://www.21shares.com/en-us/contact-us)
+- [Blog](https://www.21shares.com/en-us/insights)
+- [Terms of service](https://www.21shares.com/en-us/terms-of-use)
+- [Privacy policy](https://www.21shares.com/en-us/privacy-policy)
+- [GitHub](https://github.com/amun)
+
+## API Evangelist rating
+
+**Kin Score 11.3** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 49.1 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 21.1 |
+
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 23.1** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/21shares/](https://apis.io/providers/21shares/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for 21Shares: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/21shares/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
